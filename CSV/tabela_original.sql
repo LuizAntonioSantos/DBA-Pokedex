@@ -1,0 +1,53 @@
+-- public.pokemon_original definição
+
+-- Drop table
+
+-- DROP TABLE public.pokemon_original;
+
+CREATE TABLE public.pokemon_original (
+	pokemon_id int4 NULL,
+	pokedex_number int4 NULL,
+	pokemon_name text NULL,
+	classification text NULL,
+	alternate_form_name text NULL,
+	original_pokemon_id text NULL,
+	is_legendary text NULL,
+	pokemon_height float4 NULL,
+	pokemon_weight float4 NULL,
+	primary_type text NULL,
+	secondary_type text NULL,
+	primary_ability text NULL,
+	primary_ability_description text NULL,
+	secondary_ability text NULL,
+	secondary_ability_description text NULL,
+	hidden_ability text NULL,
+	hidden_ability_description text NULL,
+	special_event_ability text NULL,
+	special_event_ability_description text NULL,
+	male_ratio float4 NULL,
+	female_ratio float4 NULL,
+	base_happiness int4 NULL,
+	games_of_origin text NULL,
+	health_stat int4 NULL,
+	attack_stat int4 NULL,
+	defense_stat int4 NULL,
+	special_attack_stat int4 NULL,
+	special_defense_stat int4 NULL,
+	speed_stat int4 NULL,
+	base_stat_total int4 NULL,
+	health_ev int4 NULL,
+	attack_ev int4 NULL,
+	defense_ev int4 NULL,
+	special_attack_ev int4 NULL,
+	special_defense_ev int4 NULL,
+	speed_ev int4 NULL,
+	ev_yield_total int4 NULL,
+	catch_rate int4 NULL,
+	experience_growth text NULL,
+	experience_growth_total int4 NULL,
+	primary_egg_group text NULL,
+	secondary_egg_group text NULL,
+	egg_cycle_count int4 NULL,
+	pre_evolution_pokemon_id text NULL,
+	evolution_details text NULL
+);
