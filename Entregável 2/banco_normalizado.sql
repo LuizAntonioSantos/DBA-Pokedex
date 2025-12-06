@@ -1,4 +1,4 @@
-select * from pokemon_database;
+select * from pokemon_original;
 
 -- TABELA EXPERIENCE GROWTH
 
@@ -48,7 +48,7 @@ CREATE INDEX idx_pokemon_pokedex_num ON pokemon(pokedex_num);
 CREATE TABLE IF NOT EXISTS pokemon_evolution (
     from_pokemon_id INT NOT NULL REFERENCES pokemon(pokemon_id),
     to_pokemon_id INT NOT NULL REFERENCES pokemon(pokemon_id),
-    condition VARCHAR(100) NOT NULL,
+    condition TEXT NOT NULL,
     PRIMARY KEY (from_pokemon_id, to_pokemon_id)
 );
 
