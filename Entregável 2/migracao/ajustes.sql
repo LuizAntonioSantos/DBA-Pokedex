@@ -20,6 +20,7 @@ ALTER TABLE pokemon_original RENAME COLUMN "Pokemon Id" TO pokemon_id;
 ALTER TABLE pokemon_original RENAME COLUMN "Pokedex Number" TO pokedex_number;
 ALTER TABLE pokemon_original RENAME COLUMN "Pokemon Name" TO pokemon_name;
 ALTER TABLE pokemon_original RENAME COLUMN "Legendary Type" TO is_legendary;
+ALTER TABLE pokemon_original RENAME COLUMN "Classification" TO classification;
 ALTER TABLE pokemon_original RENAME COLUMN "Alternate Form Name" TO alternate_form_name;
 ALTER TABLE pokemon_original RENAME COLUMN "Original Pokemon ID" TO original_pokemon_id;
 ALTER TABLE pokemon_original RENAME COLUMN "Pokemon Height" TO pokemon_height;
