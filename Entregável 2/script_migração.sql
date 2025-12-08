@@ -267,3 +267,11 @@ FROM pokemon_evolution pe
 JOIN pokemon pf ON pf.pokemon_id = pe.from_pokemon_id
 JOIN pokemon pt ON pt.pokemon_id = pe.to_pokemon_id
 ORDER BY pe.from_pokemon_id;
+
+UPDATE pokemon
+SET is_legendary = NULL
+WHERE is_legendary ='NULL';
+
+UPDATE pokemon
+SET alternat_form_name = NULL
+WHERE alternat_form_name = 'NULL';
