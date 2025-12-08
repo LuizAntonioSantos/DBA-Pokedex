@@ -39,10 +39,6 @@ BEGIN
     END IF;
 
     
-    v_male := ROUND(v_male);
-    v_female := ROUND(v_female);
-
-    
     IF (v_male + v_female) <> 100 THEN
         v_female := 100 - v_male;
     END IF;
