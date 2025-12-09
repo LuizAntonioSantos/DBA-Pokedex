@@ -234,6 +234,10 @@ inner join ability a on pa.ability_id = a.ability_id
 where a.name = '"Speed Boost"'
 
 --TABELA POKEMON_EVOLUTION
+
+--necessário para receber os dados
+alter table pokemon_evolution alter column condition type text;
+
 --númerico
 INSERT INTO pokemon_evolution (from_pokemon_id, to_pokemon_id, condition)
 SELECT DISTINCT prev_p.pokemon_id AS from_id,
