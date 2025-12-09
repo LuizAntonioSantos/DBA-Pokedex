@@ -25,6 +25,7 @@ select p.pokedex_num from pokedex p;
 
 --TABELA POKEMON
 INSERT INTO pokemon (
+	pokemon_id,
     pokedex_num, 
     pokemon_name, 
     classification, 
@@ -41,6 +42,7 @@ INSERT INTO pokemon (
     female_ratio
 )
 SELECT 
+	op.pokemon_id,
     op.pokedex_number,
     op.pokemon_name,
     op.classification,
@@ -57,7 +59,8 @@ SELECT
     op.female_ratio
 FROM pokemon_original op
 LEFT JOIN experience_growth e 
-       ON e.total_exp = op.experience_growth_total;
+       ON e.total_exp = op.experience_growth_total
+       ON CONFLICT DO NOTHING;
 
 --teste
 select *from pokemon p;
@@ -234,30 +237,15 @@ inner join ability a on pa.ability_id = a.ability_id
 where a.name = '"Speed Boost"'
 
 --TABELA POKEMON_EVOLUTION
-
---necessário para receber os dados
-alter table pokemon_evolution alter column condition type text;
-
---númerico
 INSERT INTO pokemon_evolution (from_pokemon_id, to_pokemon_id, condition)
-SELECT DISTINCT prev_p.pokemon_id AS from_id,
-                curr_p.pokemon_id AS to_id,
-                COALESCE(NULLIF(TRIM(o.evolution_details), ''), 'Unknown') AS condition
+SELECT DISTINCT 
+    o.pre_evolution_pokemon_id::INT AS from_id,
+    o.pokemon_id AS to_id,
+    COALESCE(NULLIF(TRIM(o.evolution_details), ''), 'Unknown') AS condition
 FROM pokemon_original o
-JOIN pokemon curr_p ON curr_p.pokedex_num = o.pokedex_number
-JOIN pokemon prev_p ON prev_p.pokedex_num = o.pre_evolution_pokemon_id::INT
 WHERE o.pre_evolution_pokemon_id ~ '^[0-9]+$'
-ON CONFLICT DO NOTHING;
---texto
-INSERT INTO pokemon_evolution (from_pokemon_id, to_pokemon_id, condition)
-SELECT DISTINCT prev_p.pokemon_id AS from_id,
-                curr_p.pokemon_id AS to_id,
-                COALESCE(NULLIF(TRIM(o.evolution_details), ''), 'Unknown') AS condition
-FROM pokemon_original o
-JOIN pokemon curr_p ON LOWER(curr_p.pokemon_name) = LOWER(o.pokemon_name)
-JOIN pokemon prev_p ON LOWER(prev_p.pokemon_name) = LOWER(o.pre_evolution_pokemon_id)
-WHERE o.pre_evolution_pokemon_id !~ '^[0-9]+$'
   AND o.pre_evolution_pokemon_id IS NOT NULL
+  AND o.pre_evolution_pokemon_id <> ''
 ON CONFLICT DO NOTHING;
 
 --teste
@@ -271,3 +259,11 @@ FROM pokemon_evolution pe
 JOIN pokemon pf ON pf.pokemon_id = pe.from_pokemon_id
 JOIN pokemon pt ON pt.pokemon_id = pe.to_pokemon_id
 ORDER BY pe.from_pokemon_id;
+
+UPDATE pokemon
+SET is_legendary = NULL
+WHERE is_legendary ='NULL';
+
+UPDATE pokemon
+SET alternat_form_name = NULL
+WHERE alternat_form_name = 'NULL';
