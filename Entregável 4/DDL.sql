@@ -9,19 +9,19 @@ CREATE TABLE dw.dim_pokemon (
     weight            DECIMAL(10,2),
     base_happiness    INT,
     capture_rate      INT,
-    is_legendary      BOOLEAN,
+    is_legendary      VARCHAR(50),
     male_ratio        DECIMAL(5,2),
     female_ratio      DECIMAL(5,2),
 );
 
-CREATE TABLE dw.dim_tipo (
+CREATE TABLE dw.dim_type (
     type_sk   SERIAL PRIMARY KEY,
     type_id   INT,
     name      VARCHAR(50),
 );
 
 
-CREATE TABLE dw.dim_habilidade (
+CREATE TABLE dw.dim_ability (
     ability_sk   SERIAL PRIMARY KEY,
     ability_id   INT,
     name         VARCHAR(100),
@@ -48,6 +48,7 @@ CREATE TABLE dw.fato_pokemon (
     type_sk           INT REFERENCES dw.dim_tipo(type_sk),
     ability_sk        INT REFERENCES dw.dim_habilidade(ability_sk),
     egg_group_sk      INT REFERENCES dw.dim_egg_group(egg_group_sk),
+    stat_sk           INT REFERENCES dw.dim_stat(stat_sk),
 
     total_stats       INT,
     avg_stat          DECIMAL(10,2),
