@@ -1,8 +1,3 @@
--- trigger
-create trigger tr_sync_dim_egg_group
-after insert or update or delete on public.egg_group
-for each row execute function sync_dim_egg_group();
-
 --function
 create or replace function sync_dim_egg_group()
 returns trigger as $$
@@ -28,3 +23,8 @@ begin
     return null;
 end;
 $$ language plpgsql;
+
+-- trigger
+create trigger tr_sync_dim_egg_group
+after insert or update or delete on public.egg_group
+for each row execute function sync_dim_egg_group();
