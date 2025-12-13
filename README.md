@@ -35,15 +35,19 @@ Importe o CSV original do **Pokémon Database** para dentro do PostgreSQL.
 
 Após criar o schema e importar o CSV, execute os scripts **nesta ordem obrigatória**:
 
-### 1 - como_comecar.sql
+### 1 - ajustes.sql
+
+Ajusta os nomes das tabelas pokemon_original para desbugar futuras migrações
+
+### 2 - como_comecar.sql
 
 Contém a preparação inicial das tabelas, ajustes de tipos, padronização de dados e demais estruturas necessárias para iniciar o projeto.
 
-### 2 - banco_normalizado.sql
+### 3 - banco_normalizado.sql
 
 Responsável por transformar os dados originais em um banco **normalizado**, seguindo as regras de normalização aplicadas para o trabalho.
 
-### 3 - script_migracao.sql
+### 4 - script_migracao.sql/script_migracao_linux.sql
 
 Executa a migração dos dados do banco normalizado para o ambiente final (por exemplo: um esquema dimensional, DW em estrela, tabelas fato/dimensões, etc.).
 
@@ -58,7 +62,7 @@ Com o ambiente pronto, você poderá:
 * Explorar o DW
 * Ver o ETL
 
-Esses scripts garantem que toda a base esteja coerente e apta para testes e análises.
+Eses scripts garantem que toda a base esteja coerente e apta para testes e análises.
 
 ---
 
