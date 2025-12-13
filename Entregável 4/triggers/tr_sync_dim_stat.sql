@@ -26,5 +26,5 @@ $$ language plpgsql;
 
 --Trigger
 create trigger tr_sync_dim_stat
-after insert or update or delete on public.stat
+after insert or update or delete on pokemon_trab.stats
 for each row execute function sync_dim_stat();

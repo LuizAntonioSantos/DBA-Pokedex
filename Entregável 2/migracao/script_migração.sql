@@ -105,7 +105,7 @@ ON CONFLICT DO NOTHING;
 select *from pokemon p
 inner join pokemon_type pt on p.pokemon_id = pt.pokemon_id
 inner join type t on pt.type_id = t.type_id 
-where t.name='"Rock"' order by p.pokemon_id ASC;
+where t.name='Rock' order by p.pokemon_id ASC;
 
 select *from pokemon_type;
 
@@ -144,7 +144,7 @@ ON CONFLICT DO NOTHING;
 select *from pokemon p
 inner join pokemon_egg pe on p.pokemon_id=pe.pokemon_id 
 inner join egg_group eg on pe.egg_group_id=eg.egg_group_id 
-where eg.name='"Field"';
+where eg.name='Field';
 
 --TABELA STATS
 INSERT INTO stats (name) VALUES
@@ -234,7 +234,7 @@ ON CONFLICT DO NOTHING;
 select *from pokemon p 
 inner join pokemon_ability pa on p.pokemon_id = pa.pokemon_id 
 inner join ability a on pa.ability_id = a.ability_id 
-where a.name = '"Speed Boost"'
+where a.name = 'Speed Boost'
 
 --TABELA POKEMON_EVOLUTION
 INSERT INTO pokemon_evolution (from_pokemon_id, to_pokemon_id, condition)

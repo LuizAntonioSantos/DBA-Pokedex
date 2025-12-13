@@ -26,5 +26,5 @@ $$ language plpgsql;
 
 -- trigger
 create trigger tr_sync_dim_egg_group
-after insert or update or delete on public.egg_group
+after insert or update or delete on pokemon_trab.egg_group
 for each row execute function sync_dim_egg_group();

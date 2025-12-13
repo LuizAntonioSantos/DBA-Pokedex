@@ -27,5 +27,5 @@ $$ LANGUAGE plpgsql;
 
 --Trigger
 CREATE TRIGGER tr_sync_dim_type
-AFTER INSERT OR UPDATE OR DELETE ON public.type
+AFTER INSERT OR UPDATE OR DELETE ON pokemon_trab.type
 FOR EACH ROW EXECUTE FUNCTION sync_dim_type();

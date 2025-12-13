@@ -30,5 +30,5 @@ $$ LANGUAGE plpgsql;
 
 --Trigger
 CREATE TRIGGER tr_sync_dim_ability
-AFTER INSERT OR UPDATE OR DELETE ON public.ability
+AFTER INSERT OR UPDATE OR DELETE ON pokemon_trab.ability
 FOR EACH ROW EXECUTE FUNCTION sync_dim_ability();

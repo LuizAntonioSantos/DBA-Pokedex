@@ -23,7 +23,7 @@ from pokemon_trab.pokemon p
 ;
 
 
-insert into dw.dim_tipo (
+insert into dw.dim_type (
 	type_id,
 	name
 ) select t.type_id, t.name
@@ -31,7 +31,7 @@ from pokemon_trab.type t
 ;
 
 
-insert into dw.dim_habilidade (
+insert into dw.dim_ability (
 	ability_id,
 	name,
 	description
@@ -87,7 +87,7 @@ left join (
 left join pokemon_trab.pokemon_type pt 
     on pt.pokemon_id = p.pokemon_id
 
-left join dw.dim_tipo dt
+left join dw.dim_type dt
     on dt.type_id = pt.type_id
 
 left join (
@@ -99,7 +99,7 @@ left join (
 left join pokemon_trab.pokemon_ability pa
     on pa.pokemon_id = p.pokemon_id
 
-left join dw.dim_habilidade dh
+left join dw.dim_ability dh
     on dh.ability_id = pa.ability_id
 
 left join pokemon_trab.pokemon_egg pe
