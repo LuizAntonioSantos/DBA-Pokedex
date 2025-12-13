@@ -1,9 +1,4 @@
---trigger
-create trigger tr_sync_dim_stat
-after insert or update or delete on public.stat
-for each row execute function sync_dim_stat();
-
---function
+--Function
 create or replace function sync_dim_stat()
 returns trigger as $$
 begin
@@ -28,3 +23,8 @@ begin
     return null;
 end;
 $$ language plpgsql;
+
+--Trigger
+create trigger tr_sync_dim_stat
+after insert or update or delete on public.stat
+for each row execute function sync_dim_stat();
