@@ -1,3 +1,4 @@
+--Function
 CREATE OR REPLACE FUNCTION sync_dim_pokemon()
 RETURNS TRIGGER AS $$
 BEGIN
@@ -41,6 +42,7 @@ BEGIN
 END;
 $$ LANGUAGE plpgsql;
 
+--Trigger
 CREATE TRIGGER tr_sync_dim_pokemon
 AFTER INSERT OR UPDATE OR DELETE ON pokemon_trab.pokemon
 FOR EACH ROW EXECUTE FUNCTION sync_dim_pokemon();
